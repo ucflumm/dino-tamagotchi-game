@@ -284,7 +284,7 @@ fun FruitCatcherGame(
                         .size(50.dp)
                         .background(Color(0xFF334155), CircleShape)
                 ) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Move Left", color = Color.White)
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Move Left", tint = Color.White)
                 }
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -302,7 +302,7 @@ fun FruitCatcherGame(
                         .size(50.dp)
                         .background(Color(0xFF334155), CircleShape)
                 ) {
-                    Icon(Icons.Default.ArrowForward, contentDescription = "Move Right", color = Color.White)
+                    Icon(Icons.Default.ArrowForward, contentDescription = "Move Right", tint = Color.White)
                 }
             }
         }

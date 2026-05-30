@@ -2,95 +2,50 @@ package com.example.dinotamagotchi
 
 import android.media.AudioManager
 import android.media.ToneGenerator
-import android.util.Log
 
 object SoundEffects {
     private var isMuted = false
-    private var toneGenerator: ToneGenerator? = try {
-        ToneGenerator(AudioManager.STREAM_MUSIC, 85)
-    } catch (e: Exception) {
-        null
-    }
+    private val toneGenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
 
     fun setMuted(muted: Boolean) {
         isMuted = muted
     }
 
+    private fun playTone(type: Int, duration: Int) {
+        if (!isMuted) {
+            toneGenerator.startTone(type, duration)
+        }
+    }
+
     fun click() {
-        if (isMuted) return
-        Thread {
-            try {
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 40)
-            } catch (e: Exception) {
-                Log.e("SoundEffects", "Error playing click tone", e)
-            }
-        }.start()
+        playTone(ToneGenerator.TONE_PROP_BEEP, 100)
+    }
+
+    fun jump() {
+        playTone(ToneGenerator.TONE_CDMA_PIP, 150)
     }
 
     fun success() {
-        if (isMuted) return
-        Thread {
-            try {
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_PROMPT, 100)
-                Thread.sleep(120)
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_PROMPT, 150)
-            } catch (e: Exception) {
-                Log.e("SoundEffects", "Error playing success tone", e)
-            }
-        }.start()
-    }
-
-    fun hurt() {
-        if (isMuted) return
-        Thread {
-            try {
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_NACK, 250)
-            } catch (e: Exception) {
-                Log.e("SoundEffects", "Error playing hurt tone", e)
-            }
-        }.start()
+        playTone(ToneGenerator.TONE_CDMA_CONFIRM, 300)
     }
 
     fun eat() {
-        if (isMuted) return
-        Thread {
-            try {
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 60)
-                Thread.sleep(80)
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 60)
-            } catch (e: Exception) {
-                Log.e("SoundEffects", "Error playing eat tone", e)
-            }
-        }.start()
+        playTone(ToneGenerator.TONE_CDMA_NETWORK_USA_RINGBACK, 200)
+    }
+
+    fun clean() {
+        playTone(ToneGenerator.TONE_SUP_PIP, 100)
+    }
+
+    fun hurt() {
+        playTone(ToneGenerator.TONE_CDMA_SOFT_ERROR_LITE, 400)
     }
 
     fun hatch() {
-        if (isMuted) return
-        Thread {
-            try {
-                for (i in 1..4) {
-                    toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 50)
-                    Thread.sleep(80)
-                }
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_PROMPT, 300)
-            } catch (e: Exception) {
-                Log.e("SoundEffects", "Error playing hatch tone", e)
-            }
-        }.start()
+        playTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 500)
     }
 
     fun levelUp() {
-        if (isMuted) return
-        Thread {
-            try {
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_PROMPT, 150)
-                Thread.sleep(200)
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_PROMPT, 150)
-                Thread.sleep(200)
-                toneGenerator?.startTone(ToneGenerator.TONE_PROP_ACK, 300)
-            } catch (e: Exception) {
-                Log.e("SoundEffects", "Error playing levelUp tone", e)
-            }
-        }.start()
+        playTone(ToneGenerator.TONE_CDMA_HIGH_L, 500)
     }
 }
