@@ -665,72 +665,12 @@ export default function App() {
   };
 
   return (
-    <main className="min-h-screen bg-[#111827] text-slate-100 font-sans flex flex-col justify-center items-center p-3 sm:p-6 overflow-hidden select-none select-none relative">
-      
-      {/* Decorative ambient neon background circles */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-500/10 blur-[130px] rounded-full pointer-events-none" />
-
-      {/* Desk surface controller toolbar */}
-      <div className="w-full max-w-[1010px] mb-3 flex flex-wrap items-center justify-between gap-3 px-2 z-10">
-        <div className="flex items-center gap-2">
-          <div className="bg-emerald-500 text-slate-950 p-1.5 rounded-xl font-black text-xs animate-bounce">
-            🦖 TABLET SIMULATOR
-          </div>
-          <span className="text-[11px] font-mono font-bold text-slate-400">
-            DinoOS v3.4 • Vibrant Edition
-          </span>
-        </div>
-
-        {/* Rotate tablet button */}
-        <button
-          onClick={() => {
-            SoundEffects.click();
-            setIsLandscape((prev) => !prev);
-          }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold cursor-pointer active:scale-95 transition"
-        >
-          <RotateCw size={12} className="text-emerald-400" />
-          <span>Rotate Screen</span>
-          <span className="text-[10px] bg-slate-900 text-slate-300 px-1 py-0.2 rounded">
-            {isLandscape ? 'Landscape' : 'Portrait'}
-          </span>
-        </button>
-      </div>
-
-      {/* ========================================================= */}
-      {/* 📱 HARNESS COMPONENT: SIMULATED ANDROID TABLET FRAME */}
-      {/* ========================================================= */}
-      <div
-        className={`w-full max-w-[1010px] border-[14px] border-slate-900 bg-slate-950 rounded-[2.5rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] relative overflow-hidden transition-all duration-500 ease-in-out ${
-          isLandscape ? 'aspect-[16/10.5]' : 'aspect-[10/14.5]'
-        }`}
-        style={{
-          boxShadow: '0 0 0 2px rgba(255,255,255,0.05), shadow-2xl',
-        }}
-      >
-        {/* Physical camera lens punch hole on the bezel (top bezel or side bezel based on perspective) */}
-        <div
-          className={`absolute rounded-full bg-[#111] border border-slate-800 z-50 transition-all duration-500 ${
-            isLandscape
-              ? 'top-[4px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 flex items-center justify-center'
-              : 'top-1/2 left-[4px] -translate-y-1/2 w-3.5 h-3.5 flex items-center justify-center'
-          }`}
-        >
-          <div className="w-1.5 h-1.5 bg-blue-900/80 rounded-full" /> {/* Camera lens reflection */}
-        </div>
-
-        {/* Outer Volume/Power switches mock buttons on bezel corner edges */}
-        <div className="absolute top-[80px] -right-[15px] w-[3px] h-[40px] bg-slate-800 rounded-l" />
-        <div className="absolute top-[130px] -right-[15px] w-[3px] h-[30px] bg-slate-800 rounded-l" />
-
-        {/* SCREEN CANVAS AREA */}
-        <div
-          className="absolute inset-0 bg-slate-900 flex flex-col justify-between overflow-hidden relative"
-          style={{
-            filter: `brightness(${screenBrightness}%)`,
-          }}
-        >
+    <main
+      className="h-screen w-full bg-slate-900 text-slate-100 font-sans flex flex-col justify-between overflow-hidden select-none relative"
+      style={{
+        filter: `brightness(${screenBrightness}%)`,
+      }}
+    >
           
           {/* ========================================================= */}
           {/* 📶 ANDROID SYSTEM STATUS BAR */}
@@ -1831,9 +1771,6 @@ export default function App() {
               <div className="w-3.5 h-3.5 border-2 border-slate-300 rounded" />
             </button>
           </div>
-
-        </div>
-      </div>
 
       {/* ========================================================= */}
       {/* 🔮 CELESTIAL EVOLUTION MILESTONE DIALOG POPUP */}
