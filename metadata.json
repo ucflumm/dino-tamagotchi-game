@@ -1,0 +1,6 @@
+{
+  "name": "Dino Tamagotchi Game",
+  "description": "Feed, groom, and play games with your digital dinosaur! Help them grow, clean up after them, and play interactive games to keep them happy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
